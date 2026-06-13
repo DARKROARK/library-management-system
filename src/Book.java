@@ -25,44 +25,23 @@ public class Book {
     public int getAvailableQuantity() { return availableQuantity; }
     public String getCategory() { return category; }
 
-    public void setTitle(String title) {
-        if (!title.trim().isEmpty()) this.title = title;
-    }
-
-    public void setAuthor(String author) {
-        if (!author.trim().isEmpty()) this.author = author;
-    }
-
+    public void setTitle(String title) { this.title = title; }
+    public void setAuthor(String author) { this.author = author; }
+    public void setCategory(String category) { this.category = category; }
+    
     public void setQuantity(int quantity) {
         if (quantity >= 0) {
             this.quantity = quantity;
-            if (this.availableQuantity > quantity) this.availableQuantity = quantity;
+            this.availableQuantity = quantity;
         }
-    }
-
-    public void setCategory(String category) {
-        if (!category.trim().isEmpty()) this.category = category;
     }
 
     public boolean isAvailable() {
         return availableQuantity > 0;
     }
 
-    public boolean borrowBook() {
-        if (availableQuantity > 0) {
-            availableQuantity--;
-            return true;
-        }
-        return false;
-    }
-
-    public void returnBook() {
-        if (availableQuantity < quantity) availableQuantity++;
-    }
-
     public void displayInfo() {
-        System.out.println("ID: " + id + " | Title: " + title + " | Author: " + author);
-        System.out.println("  ISBN: " + isbn + " | Category: " + category);
-        System.out.println("  Total: " + quantity + " | Available: " + availableQuantity);
+        System.out.println("ID: " + id + " | " + title + " | " + author);
+        System.out.println("  ISBN: " + isbn + " | " + category + " | Available: " + availableQuantity);
     }
 }
